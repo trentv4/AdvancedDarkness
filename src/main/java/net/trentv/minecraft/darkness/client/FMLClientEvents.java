@@ -12,11 +12,13 @@ public class FMLClientEvents
 	@SubscribeEvent
 	public void onClientTick(ClientTickEvent event)
 	{
-		EntityPlayer player = Minecraft.getMinecraft().thePlayer;
+/*		EntityPlayer player = Minecraft.getMinecraft().thePlayer;
 		if(player == null) return;
 		World world = player.worldObj;
-		if(world == null) return;
-		System.out.println(player.posX);
-		Minecraft.getMinecraft().gameSettings.gammaSetting = AdvancedDarkness.config.lightLevel;
+		if(world == null) return;*/
+		if(AdvancedDarkness.config.autoSetLightLevel)
+		{
+			Minecraft.getMinecraft().gameSettings.gammaSetting = AdvancedDarkness.config.lightLevel;
+		}
 	}
 }
