@@ -1,0 +1,11 @@
+Advanced Darkness 1.1 for Minecraft 1.10.2
+----------
+
+Changes:
+
+* Changed default value for gamma from -0.5 to -0.7
+
+Fixes:
+
+* Fixed crash as a result of improper @Side'ing
+* Fixed issue in build.gradle that was generating improperly named jarfiles
