@@ -1,11 +1,8 @@
 package net.trentv.minecraft.darkness.client;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockAir;
-import net.minecraft.block.BlockDirt;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -13,6 +10,7 @@ import net.minecraftforge.fml.common.gameevent.TickEvent.ClientTickEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.trentv.minecraft.darkness.AdvancedDarkness;
+import net.trentv.minecraft.darkness.common.ADBlocks;
 
 @SideOnly(Side.CLIENT)
 public class FMLClientEvents
@@ -47,7 +45,7 @@ public class FMLClientEvents
 				{
 					Block block = worldObj.getBlockState(new BlockPos(x + i, y + j, z + k)).getBlock();
 					
-					if(block == AdvancedDarkness.blockGammaAdjuster)
+					if(block == ADBlocks.blockGammaAdjuster)
 					{
 						count++;
 					}

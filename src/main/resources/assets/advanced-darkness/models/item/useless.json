@@ -1,0 +1,6 @@
+{
+    "parent":"advanced-darkness:item/standard",
+    "textures": {
+        "layer0":"advanced-darkness:item/useless"
+    }
+}
