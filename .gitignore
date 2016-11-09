@@ -1,13 +1,15 @@
 #################
 ## Eclipse
 #################
-run/
+
 *.pydevproject
 .gradle/
 .project
 .metadata
 bin/
+build/
 eclipse/
+run/
 tmp/
 *.tmp
 *.bak
@@ -23,6 +25,8 @@ mods/
 resourcepacks/
 saves/
 /options.txt
+gradle/
+build.gradle
 build/
 
 # External tool builders
