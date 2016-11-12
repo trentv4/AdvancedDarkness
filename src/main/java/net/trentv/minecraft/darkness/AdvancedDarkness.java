@@ -16,7 +16,7 @@ import net.trentv.minecraft.darkness.config.AdvancedDarknessConfigurations;
 @Mod(modid = AdvancedDarkness.MODID, name = "Advanced Darkness", version = AdvancedDarkness.VERSION, acceptedMinecraftVersions = "[" + AdvancedDarkness.TARGET_VERSION + "]")
 public class AdvancedDarkness
 {
-	public static final String MODID = "advanced-darkness";
+	public static final String MODID = "advanced_darkness";
 	public static final String VERSION = "1.1";
 	public static final String TARGET_VERSION = "1.10.2";
 
@@ -27,10 +27,10 @@ public class AdvancedDarkness
 	public static CommonProxy proxy;
 	public static BlockGammaAdjuster blockGammaAdjuster = (BlockGammaAdjuster) new BlockGammaAdjuster(Material.GLASS)
 	                                                      .setCreativeTab(CreativeTabs.DECORATIONS)
-	                                                      .setUnlocalizedName("gamma-adjuster")
-	                                                      .setRegistryName(MODID, "gamma-adjuster");
+	                                                      .setUnlocalizedName("gamma_adjuster")
+	                                                      .setRegistryName(MODID, "gamma_adjuster");
 	public static ItemBlock itemBlockGammaAdjuster = (ItemBlock) new ItemBlock(blockGammaAdjuster)
-	                                                      .setRegistryName(MODID, "gamma-adjuster");
+	                                                      .setRegistryName(MODID, "gamma_adjuster");
 	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)

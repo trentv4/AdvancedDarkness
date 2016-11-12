@@ -1,5 +1,6 @@
 package net.trentv.minecraft.darkness.client;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemModelMesher;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
@@ -14,8 +15,9 @@ public class ClientProxy extends CommonProxy
 	@Override
 	public void registerRenderers()
 	{
-		ModelLoader.setCustomModelResourceLocation(AdvancedDarkness.itemBlockGammaAdjuster, 0,
-				new ModelResourceLocation(AdvancedDarkness.itemBlockGammaAdjuster.getRegistryName(), "inventory"));
+		System.out.println("Model registered.");
+		ItemModelMesher a = Minecraft.getMinecraft().getRenderItem().getItemModelMesher();
+		a.register(AdvancedDarkness.itemBlockGammaAdjuster, 0, new ModelResourceLocation(AdvancedDarkness.itemBlockGammaAdjuster.getRegistryName(), "inventory"));
 	}
 	
 	@Override
