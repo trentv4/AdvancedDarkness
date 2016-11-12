@@ -12,17 +12,18 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.trentv.minecraft.darkness.AdvancedDarkness;
 
 @SideOnly(Side.CLIENT)
-public class FMLClientEvents
+public class ClientEvents
 {
 	@SubscribeEvent
 	public void onClientTick(ClientTickEvent event)
 	{
 		int lightMod = 0;
+		int lightRadius = 15;
 		EntityPlayer player = Minecraft.getMinecraft().thePlayer;
 		if(player != null)
 		{
 			World world = player.worldObj;
-			lightMod = checkLightModifiers(world, (int) player.posX, (int) player.posY, (int) player.posZ, 10);
+			lightMod = checkLightModifiers(world, new BlockPos(player.posX, player.posY, player.posZ), lightRadius);
 		}
 		 
 		if (AdvancedDarkness.config.autoSetLightLevel)
@@ -33,7 +34,7 @@ public class FMLClientEvents
 		}
 	}
 	
-	private int checkLightModifiers(World worldObj, int x, int y, int z, int radius)
+	private int checkLightModifiers(World worldObj, BlockPos pos, int radius)
 	{
 		int count = 0;
 		for(int i = -radius; i <= radius; i++)
@@ -42,7 +43,7 @@ public class FMLClientEvents
 			{
 				for(int k = -radius; k < radius; k++)
 				{
-					Block block = worldObj.getBlockState(new BlockPos(x + i, y + j, z + k)).getBlock();
+					Block block = worldObj.getBlockState(pos.add(i, j, k)).getBlock();
 					
 					if(block == AdvancedDarkness.blockGammaAdjuster)
 					{

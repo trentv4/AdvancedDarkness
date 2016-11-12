@@ -1,12 +1,16 @@
 package net.trentv.minecraft.darkness;
 
-import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.ItemBlock;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.trentv.minecraft.darkness.common.BlockGammaAdjuster;
 import net.trentv.minecraft.darkness.config.AdvancedDarknessConfigurations;
 
 @Mod(modid = AdvancedDarkness.MODID, name = "Advanced Darkness", version = AdvancedDarkness.VERSION, acceptedMinecraftVersions = "[" + AdvancedDarkness.TARGET_VERSION + "]")
@@ -21,12 +25,19 @@ public class AdvancedDarkness
 	@SidedProxy(clientSide = "net.trentv.minecraft.darkness.client.ClientProxy",
 	            serverSide = "net.trentv.minecraft.darkness.server.ServerProxy", modId = AdvancedDarkness.MODID)
 	public static CommonProxy proxy;
-	public static Block blockGammaAdjuster;
+	public static BlockGammaAdjuster blockGammaAdjuster = (BlockGammaAdjuster) new BlockGammaAdjuster(Material.GLASS)
+	                                                      .setCreativeTab(CreativeTabs.DECORATIONS)
+	                                                      .setUnlocalizedName("gamma-adjuster")
+	                                                      .setRegistryName(MODID, "gamma-adjuster");
+	public static ItemBlock itemBlockGammaAdjuster = (ItemBlock) new ItemBlock(blockGammaAdjuster)
+	                                                      .setRegistryName(MODID, "gamma-adjuster");
 	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)
 	{
 		config = new AdvancedDarknessConfigurations(event.getSuggestedConfigurationFile());
+		GameRegistry.register(blockGammaAdjuster);
+		GameRegistry.register(itemBlockGammaAdjuster);
 	}
 
 	@EventHandler
