@@ -10,7 +10,6 @@ import net.minecraftforge.fml.common.gameevent.TickEvent.ClientTickEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.trentv.minecraft.darkness.AdvancedDarkness;
-import net.trentv.minecraft.darkness.common.ADBlocks;
 
 @SideOnly(Side.CLIENT)
 public class FMLClientEvents
@@ -45,7 +44,7 @@ public class FMLClientEvents
 				{
 					Block block = worldObj.getBlockState(new BlockPos(x + i, y + j, z + k)).getBlock();
 					
-					if(block == ADBlocks.blockGammaAdjuster)
+					if(block == AdvancedDarkness.blockGammaAdjuster)
 					{
 						count++;
 					}
