@@ -30,6 +30,7 @@ public class ClientEvents
 		{
 			float lightLevel = AdvancedDarkness.config.lightLevel;
 			lightLevel += 0.1 * lightMod;
+			if(lightLevel > 0) lightLevel = 0;
 			Minecraft.getMinecraft().gameSettings.gammaSetting = lightLevel;
 		}
 	}
