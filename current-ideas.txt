@@ -1,5 +1,3 @@
 * Glass + iron to make a reflector
 * Make reflector magic somehow, or apply glowstone 
 * Craft reflectors together to create a gamma-booster block
-
-* Make maximum gamma allowed by reflector blocks 0.0 or 0.5 

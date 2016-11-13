@@ -38,12 +38,12 @@ public class AdvancedDarkness
 		config = new AdvancedDarknessConfigurations(event.getSuggestedConfigurationFile());
 		GameRegistry.register(blockGammaAdjuster);
 		GameRegistry.register(itemBlockGammaAdjuster);
+		proxy.registerRenderers();
 	}
 
 	@EventHandler
 	public void init(FMLInitializationEvent event)
 	{
-		proxy.registerRenderers();
 		proxy.registerEvents();
 	}
 
