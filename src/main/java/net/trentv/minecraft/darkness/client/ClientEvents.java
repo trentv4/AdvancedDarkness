@@ -29,8 +29,9 @@ public class ClientEvents
 		if (AdvancedDarkness.config.autoSetLightLevel)
 		{
 			float lightLevel = AdvancedDarkness.config.lightLevel;
+			float maxLightLevel = AdvancedDarkness.config.maxLightLevel;
 			lightLevel += 0.1 * lightMod;
-			if(lightLevel > 0) lightLevel = 0;
+			if(lightLevel > maxLightLevel) lightLevel = maxLightLevel;
 			Minecraft.getMinecraft().gameSettings.gammaSetting = lightLevel;
 		}
 	}
