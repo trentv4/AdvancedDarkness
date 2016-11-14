@@ -1,0 +1,7 @@
+{
+	"forge-marker": 1,
+    "variants": {
+    	"isonceiling=true": { "model": "advanced_darkness:lantern_top" },
+    	"isonceiling=false": { "model": "advanced_darkness:lantern_bottom" }
+  	}
+}

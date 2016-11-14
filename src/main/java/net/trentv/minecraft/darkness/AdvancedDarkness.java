@@ -27,10 +27,10 @@ public class AdvancedDarkness
 	public static CommonProxy proxy;
 	public static BlockGammaAdjuster blockGammaAdjuster = (BlockGammaAdjuster) new BlockGammaAdjuster(Material.GLASS)
 	                                                      .setCreativeTab(CreativeTabs.DECORATIONS)
-	                                                      .setUnlocalizedName("gamma_adjuster")
-	                                                      .setRegistryName(MODID, "gamma_adjuster");
+	                                                      .setUnlocalizedName("lantern")
+	                                                      .setRegistryName(MODID, "lantern");
 	public static ItemBlock itemBlockGammaAdjuster = (ItemBlock) new ItemBlock(blockGammaAdjuster)
-	                                                      .setRegistryName(MODID, "gamma_adjuster");
+	                                                      .setRegistryName(MODID, "lantern");
 	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)

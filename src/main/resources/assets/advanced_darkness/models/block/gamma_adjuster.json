@@ -1,6 +1,0 @@
-{
-	"parent": "block/cube_all",
-	"textures": {
-		"all": "advanced_darkness:block/gamma_adjuster"
-	}
-}
