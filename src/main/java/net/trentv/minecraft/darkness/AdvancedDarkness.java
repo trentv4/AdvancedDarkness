@@ -25,19 +25,19 @@ public class AdvancedDarkness
 	@SidedProxy(clientSide = "net.trentv.minecraft.darkness.client.ClientProxy",
 	            serverSide = "net.trentv.minecraft.darkness.server.ServerProxy", modId = AdvancedDarkness.MODID)
 	public static CommonProxy proxy;
-	public static BlockGammaAdjuster blockGammaAdjuster = (BlockGammaAdjuster) new BlockGammaAdjuster(Material.GLASS)
+	public static BlockGammaAdjuster blockLantern = (BlockGammaAdjuster) new BlockGammaAdjuster(Material.GLASS)
 	                                                      .setCreativeTab(CreativeTabs.DECORATIONS)
 	                                                      .setUnlocalizedName("lantern")
 	                                                      .setRegistryName(MODID, "lantern");
-	public static ItemBlock itemBlockGammaAdjuster = (ItemBlock) new ItemBlock(blockGammaAdjuster)
+	public static ItemBlock itemBlockLantern = (ItemBlock) new ItemBlock(blockLantern)
 	                                                      .setRegistryName(MODID, "lantern");
 	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)
 	{
 		config = new AdvancedDarknessConfigurations(event.getSuggestedConfigurationFile());
-		GameRegistry.register(blockGammaAdjuster);
-		GameRegistry.register(itemBlockGammaAdjuster);
+		GameRegistry.register(blockLantern);
+		GameRegistry.register(itemBlockLantern);
 		proxy.registerRenderers();
 	}
 

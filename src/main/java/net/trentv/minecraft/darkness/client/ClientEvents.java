@@ -47,7 +47,7 @@ public class ClientEvents
 				{
 					Block block = worldObj.getBlockState(pos.add(i, j, k)).getBlock();
 					
-					if(block == AdvancedDarkness.blockGammaAdjuster)
+					if(block == AdvancedDarkness.blockLantern)
 					{
 						count++;
 					}

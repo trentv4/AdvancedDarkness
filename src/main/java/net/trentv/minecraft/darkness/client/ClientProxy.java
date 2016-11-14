@@ -15,7 +15,7 @@ public class ClientProxy extends CommonProxy
 	@Override
 	public void registerRenderers()
 	{
-		ModelLoader.setCustomModelResourceLocation(AdvancedDarkness.itemBlockGammaAdjuster, 0, new ModelResourceLocation(AdvancedDarkness.itemBlockGammaAdjuster.getRegistryName(), "inventory"));
+		ModelLoader.setCustomModelResourceLocation(AdvancedDarkness.itemBlockLantern, 0, new ModelResourceLocation(AdvancedDarkness.itemBlockLantern.getRegistryName(), "inventory"));
 	}
 	
 	@Override
