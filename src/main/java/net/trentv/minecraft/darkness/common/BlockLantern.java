@@ -11,11 +11,11 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockGammaAdjuster extends Block
+public class BlockLantern extends Block
 {
 	public static final PropertyBool IS_ON_CEILING = PropertyBool.create("isonceiling");
 	
-	public BlockGammaAdjuster(Material materialIn)
+	public BlockLantern(Material materialIn)
 	{
 		super(materialIn);
 		this.setLightLevel(1f);
@@ -67,7 +67,7 @@ public class BlockGammaAdjuster extends Block
 	@SideOnly(Side.CLIENT)
 	public BlockRenderLayer getBlockLayer()
 	{
-		return BlockRenderLayer.TRANSLUCENT;
+		return BlockRenderLayer.CUTOUT;
 	}
 	
 	@Override
