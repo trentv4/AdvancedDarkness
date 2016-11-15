@@ -1,11 +1,7 @@
-Advanced Darkness 1.1 for Minecraft 1.10.2
+Advanced Darkness 1.2 for Minecraft 1.10.2
 ----------
 
-Changes:
+Additions:
 
-* Changed default value for gamma from -0.5 to -0.7
-
-Fixes:
-
-* Fixed crash as a result of improper @Side'ing
-* Fixed issue in build.gradle that was generating improperly named jarfiles
+* Added a new block to boost gamma in the world. It's called the Comforting Lantern and crafted using glowstone and iron.
+* Added a new configuration option: maxLightLevel. This regulates the maximum gamma you may be set to using Comforting Lanterns.
