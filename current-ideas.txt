@@ -1,7 +1,3 @@
-* Glass + iron to make a reflector
-* Make reflector magic somehow, or apply glowstone 
-* Craft reflectors together to create a gamma-booster block
-
 * Event where sunlight is weakened, like an eclipse
 
 * Monsters that lower the gamma the closer you are to them
