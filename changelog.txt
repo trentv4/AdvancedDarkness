@@ -1,7 +1,0 @@
-Advanced Darkness 1.2 for Minecraft 1.10.2
-----------
-
-Additions:
-
-* Added a new block to boost gamma in the world. It's called the Comforting Lantern and crafted using glowstone and iron.
-* Added a new configuration option: maxLightLevel. This regulates the maximum gamma you may be set to using Comforting Lanterns.
