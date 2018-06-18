@@ -1,4 +1,0 @@
-* Event where sunlight is weakened, like an eclipse
-
-* Monsters that lower the gamma the closer you are to them
-* Fireflies (look neat in the dark)
