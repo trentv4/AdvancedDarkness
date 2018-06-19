@@ -21,8 +21,8 @@ import net.trentv.minecraft.darkness.blocks.BlockLantern;
 import net.trentv.minecraft.darkness.proxy.ProxyCommon;
 
 @Mod(modid = AdvancedDarkness.MODID, name = AdvancedDarkness.NAME, version = AdvancedDarkness.VERSION, guiFactory = AdvancedDarkness.GUI_FACTORY, acceptedMinecraftVersions = "1.12")
-public class AdvancedDarkness {
-
+public class AdvancedDarkness
+{
 	public static final String NAME = "Advanced Darkness";
 	public static final String MODID = "advanced_darkness";
 	public static final String VERSION = "2.0.0";
@@ -37,58 +37,65 @@ public class AdvancedDarkness {
 	public static final ItemBlock ITEMBLOCK_LANTERN = (ItemBlock) new ItemBlock(BLOCK_LANTERN).setRegistryName(BLOCK_LANTERN.getRegistryName());
 
 	@EventHandler
-	public void preInit(FMLPreInitializationEvent event) {
+	public void preInit(FMLPreInitializationEvent event)
+	{
 		config = new ModConfig();
 		proxy.registerRenderers();
 		proxy.registerEvents();
 	}
 
-	public static class ModConfig extends Configuration {
-
+	public static class ModConfig extends Configuration
+	{
 		public static final String CATEGORY = "advanced_darkness";
 		public float lightLevel;
 		public boolean autoSetLightLevel;
 		public float maxLightLevel;
 
-		public ModConfig() {
+		public ModConfig()
+		{
 			super(new File("config/", AdvancedDarkness.MODID + ".cfg"));
 		}
 
-		public void init() {
-			if (AdvancedDarkness.config == null) {
+		public void init()
+		{
+			if (AdvancedDarkness.config == null)
+			{
 				AdvancedDarkness.config = new ModConfig();
 				AdvancedDarkness.config.load();
 			}
 			lightLevel = getFloat("lightLevel", CATEGORY, -0.7f, -2500f, 2500f, "Mandated gamma level. This value cannot be changed after game launch.");
 			autoSetLightLevel = getBoolean("autoSetlightLevel", CATEGORY, true, "Sets if the gamma is automatically set to lightLevel and cannot be changed.");
 			maxLightLevel = getFloat("maxLightLevel", CATEGORY, 0.0f, -2500f, 2500f, "Maximum gamma level you can boost to using gamma adjuster blocks.");
-			if (AdvancedDarkness.config.hasChanged()) {
+			if (AdvancedDarkness.config.hasChanged())
+			{
 				AdvancedDarkness.config.save();
 			}
 		}
 
 	}
 
-	public static class GuiModConfig extends GuiConfig {
-
-		public GuiModConfig(GuiScreen parent) {
+	public static class GuiModConfig extends GuiConfig
+	{
+		public GuiModConfig(GuiScreen parent)
+		{
 			super(getParent(parent), getConfigElements(), AdvancedDarkness.MODID, false, false, AdvancedDarkness.NAME + " Config");
 		}
 
-		private static GuiScreen getParent(GuiScreen parent) {
+		private static GuiScreen getParent(GuiScreen parent)
+		{
 			return parent;
 		}
 
-		private static List<IConfigElement> getConfigElements() {
+		private static List<IConfigElement> getConfigElements()
+		{
 			List<IConfigElement> configElements = new ArrayList<IConfigElement>();
 			Configuration config = AdvancedDarkness.config;
-			if (config != null) {
+			if (config != null)
+			{
 				ConfigCategory categoryClient = config.getCategory(ModConfig.CATEGORY);
 				configElements.addAll(new ConfigElement(categoryClient).getChildElements());
 			}
 			return configElements;
 		}
-
 	}
-
 }

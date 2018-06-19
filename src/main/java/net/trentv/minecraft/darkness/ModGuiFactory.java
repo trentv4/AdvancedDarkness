@@ -11,28 +11,32 @@ import net.trentv.minecraft.darkness.AdvancedDarkness.GuiModConfig;
 
 /**
  * @author p455w0rd
- *
  */
-public class ModGuiFactory implements IModGuiFactory {
+public class ModGuiFactory implements IModGuiFactory
+{
 
 	@Override
-	public void initialize(Minecraft minecraftInstance) {
+	public void initialize(Minecraft minecraftInstance)
+	{
 
 	}
 
 	@Override
-	public boolean hasConfigGui() {
+	public boolean hasConfigGui()
+	{
 		return true;
 	}
 
 	@Override
-	public GuiScreen createConfigGui(GuiScreen parentScreen) {
+	public GuiScreen createConfigGui(GuiScreen parentScreen)
+	{
 		return new GuiModConfig(parentScreen);
 	}
 
 	@Nullable
 	@Override
-	public Set<RuntimeOptionCategoryElement> runtimeGuiCategories() {
+	public Set<RuntimeOptionCategoryElement> runtimeGuiCategories()
+	{
 		return null;
 	}
 

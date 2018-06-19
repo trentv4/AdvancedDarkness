@@ -11,10 +11,12 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockLantern extends Block {
+public class BlockLantern extends Block
+{
 	public static final PropertyBool IS_ON_CEILING = PropertyBool.create("isonceiling");
 
-	public BlockLantern(Material materialIn) {
+	public BlockLantern(Material materialIn)
+	{
 		super(materialIn);
 		setLightLevel(1f);
 		setLightOpacity(0);
@@ -22,38 +24,47 @@ public class BlockLantern extends Block {
 	}
 
 	@Override
-	public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state) {
+	public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state)
+	{
 		updateBlockState(worldIn, pos);
 	}
 
-	public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn) {
+	public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn)
+	{
 		updateBlockState(worldIn, pos);
 	}
 
 	@Override
-	public BlockStateContainer createBlockState() {
+	public BlockStateContainer createBlockState()
+	{
 		return new BlockStateContainer(this, IS_ON_CEILING);
 	}
 
 	@Override
-	public IBlockState getStateFromMeta(int meta) {
-		if (meta == 0) {
+	public IBlockState getStateFromMeta(int meta)
+	{
+		if (meta == 0)
+		{
 			return getDefaultState().withProperty(IS_ON_CEILING, true);
 		}
 		return getDefaultState().withProperty(IS_ON_CEILING, false);
 	}
 
 	@Override
-	public int getMetaFromState(IBlockState state) {
-		if (state.getValue(IS_ON_CEILING)) {
+	public int getMetaFromState(IBlockState state)
+	{
+		if (state.getValue(IS_ON_CEILING))
+		{
 			return 0;
 		}
 		return 1;
 	}
 
-	public void updateBlockState(World world, BlockPos pos) {
+	public void updateBlockState(World world, BlockPos pos)
+	{
 		boolean value = false;
-		if (world.getBlockState(pos.up()).isNormalCube()) {
+		if (world.getBlockState(pos.up()).isNormalCube())
+		{
 			value = true;
 		}
 		world.setBlockState(pos, getDefaultState().withProperty(IS_ON_CEILING, value));
@@ -61,17 +72,20 @@ public class BlockLantern extends Block {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public BlockRenderLayer getBlockLayer() {
+	public BlockRenderLayer getBlockLayer()
+	{
 		return BlockRenderLayer.CUTOUT;
 	}
 
 	@Override
-	public boolean isFullCube(IBlockState state) {
+	public boolean isFullCube(IBlockState state)
+	{
 		return false;
 	}
 
 	@Override
-	public boolean isOpaqueCube(IBlockState state) {
+	public boolean isOpaqueCube(IBlockState state)
+	{
 		return false;
 	}
 }

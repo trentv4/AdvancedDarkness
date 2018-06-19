@@ -12,33 +12,42 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.ClientTickEvent;
 import net.trentv.minecraft.darkness.AdvancedDarkness;
 
-public class ProxyClient extends ProxyCommon {
+public class ProxyClient extends ProxyCommon
+{
 
 	@Override
-	public void registerRenderers() {
+	public void registerRenderers()
+	{
 		ModelLoader.setCustomModelResourceLocation(AdvancedDarkness.ITEMBLOCK_LANTERN, 0, new ModelResourceLocation(AdvancedDarkness.ITEMBLOCK_LANTERN.getRegistryName(), "inventory"));
 	}
 
 	@Override
-	public void registerEvents() {
+	public void registerEvents()
+	{
 		super.registerEvents();
 		MinecraftForge.EVENT_BUS.register(new ProxyClient());
 	}
 
 	@SubscribeEvent
-	public void onClientTick(ClientTickEvent event) {
+	public void onClientTick(ClientTickEvent event)
+	{
 		int lightMod = 0;
 		int lightRadius = 15;
 		EntityPlayer player = Minecraft.getMinecraft().player;
-		if (player != null) {
+		if (player != null)
+		{
 			World world = player.world;
 			BlockPos pos = new BlockPos(player.posX, player.posY, player.posZ);
 			int count = 0;
-			for (int i = -lightRadius; i <= lightRadius; i++) {
-				for (int j = -lightRadius; j <= lightRadius; j++) {
-					for (int k = -lightRadius; k < lightRadius; k++) {
+			for (int i = -lightRadius; i <= lightRadius; i++)
+			{
+				for (int j = -lightRadius; j <= lightRadius; j++)
+				{
+					for (int k = -lightRadius; k < lightRadius; k++)
+					{
 						Block block = world.getBlockState(pos.add(i, j, k)).getBlock();
-						if (block == AdvancedDarkness.BLOCK_LANTERN) {
+						if (block == AdvancedDarkness.BLOCK_LANTERN)
+						{
 							count++;
 						}
 					}
@@ -47,11 +56,13 @@ public class ProxyClient extends ProxyCommon {
 			lightMod = count;
 		}
 
-		if (AdvancedDarkness.config.autoSetLightLevel) {
+		if (true | AdvancedDarkness.config.autoSetLightLevel)
+		{
 			float lightLevel = AdvancedDarkness.config.lightLevel;
 			float maxLightLevel = AdvancedDarkness.config.maxLightLevel;
 			lightLevel += 0.1 * lightMod;
-			if (lightLevel > maxLightLevel) {
+			if (lightLevel > maxLightLevel)
+			{
 				lightLevel = maxLightLevel;
 			}
 			Minecraft.getMinecraft().gameSettings.gammaSetting = lightLevel;

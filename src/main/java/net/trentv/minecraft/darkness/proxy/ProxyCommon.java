@@ -8,24 +8,30 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.trentv.minecraft.darkness.AdvancedDarkness;
 
-public class ProxyCommon {
+public class ProxyCommon
+{
 
-	public void registerRenderers() {
+	public void registerRenderers()
+	{
 	}
 
-	public void registerEvents() {
+	public void registerEvents()
+	{
 		MinecraftForge.EVENT_BUS.register(ProxyCommon.class);
 	}
 
 	@SubscribeEvent
-	public static void onBlockRegister(RegistryEvent.Register<Block> event) {
+	public static void onBlockRegister(RegistryEvent.Register<Block> event)
+	{
 		event.getRegistry().register(AdvancedDarkness.BLOCK_LANTERN);
 		ForgeRegistries.ITEMS.register(AdvancedDarkness.ITEMBLOCK_LANTERN);
 	}
 
 	@SubscribeEvent
-	public static void onConfigChange(ConfigChangedEvent.OnConfigChangedEvent e) {
-		if (e.getModID().equals(AdvancedDarkness.MODID)) {
+	public static void onConfigChange(ConfigChangedEvent.OnConfigChangedEvent e)
+	{
+		if (e.getModID().equals(AdvancedDarkness.MODID))
+		{
 			AdvancedDarkness.config.init();
 		}
 	}
