@@ -32,7 +32,7 @@ public class ClientProxy extends CommonProxy
 	public void onClientTick(ClientTickEvent event)
 	{
 		int lightMod = 0;
-		int lightRadius = 15;
+		int lightRadius = 10;
 		EntityPlayer player = Minecraft.getMinecraft().player;
 		if (player != null)
 		{
@@ -55,7 +55,7 @@ public class ClientProxy extends CommonProxy
 			}
 			lightMod = count;
 		}
-		if (true | AdvancedDarkness.config.autoSetLightLevel)
+		if (AdvancedDarkness.config.autoSetLightLevel)
 		{
 			float lightLevel = AdvancedDarkness.config.lightLevel;
 			float maxLightLevel = AdvancedDarkness.config.maxLightLevel;

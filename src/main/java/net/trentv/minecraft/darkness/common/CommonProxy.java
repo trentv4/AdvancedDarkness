@@ -31,7 +31,7 @@ public class CommonProxy
 	{
 		if (e.getModID().equals(AdvancedDarkness.MODID))
 		{
-			AdvancedDarkness.config.save();
+			AdvancedDarkness.config.update();
 		}
 	}
 }

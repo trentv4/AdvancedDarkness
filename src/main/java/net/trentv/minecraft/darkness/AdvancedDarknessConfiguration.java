@@ -52,8 +52,12 @@ public class AdvancedDarknessConfiguration implements IModGuiFactory
 		public ModConfig()
 		{
 			super(new File("config/", AdvancedDarkness.MODID + ".cfg"));
-
 			load();
+			update();
+		}
+
+		public void update()
+		{
 			lightLevel = getFloat("lightLevel", CATEGORY, -0.7f, -2500f, 2500f, "Mandated gamma level. This value cannot be changed after game launch.");
 			autoSetLightLevel = getBoolean("autoSetlightLevel", CATEGORY, true, "Sets if the gamma is automatically set to lightLevel and cannot be changed.");
 			maxLightLevel = getFloat("maxLightLevel", CATEGORY, 0.0f, -2500f, 2500f, "Maximum gamma level you can boost to using gamma adjuster blocks.");
