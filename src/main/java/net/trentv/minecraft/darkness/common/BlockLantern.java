@@ -1,4 +1,4 @@
-package net.trentv.minecraft.darkness.blocks;
+package net.trentv.minecraft.darkness.common;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;

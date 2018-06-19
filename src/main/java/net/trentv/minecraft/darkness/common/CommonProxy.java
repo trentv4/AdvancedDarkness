@@ -1,4 +1,4 @@
-package net.trentv.minecraft.darkness.proxy;
+package net.trentv.minecraft.darkness.common;
 
 import net.minecraft.block.Block;
 import net.minecraftforge.common.MinecraftForge;
@@ -8,16 +8,15 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.trentv.minecraft.darkness.AdvancedDarkness;
 
-public class ProxyCommon
+public class CommonProxy
 {
-
 	public void registerRenderers()
 	{
 	}
 
 	public void registerEvents()
 	{
-		MinecraftForge.EVENT_BUS.register(ProxyCommon.class);
+		MinecraftForge.EVENT_BUS.register(CommonProxy.class);
 	}
 
 	@SubscribeEvent
@@ -32,8 +31,7 @@ public class ProxyCommon
 	{
 		if (e.getModID().equals(AdvancedDarkness.MODID))
 		{
-			AdvancedDarkness.config.init();
+			AdvancedDarkness.config.save();
 		}
 	}
-
 }

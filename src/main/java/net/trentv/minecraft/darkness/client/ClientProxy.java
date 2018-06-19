@@ -1,4 +1,4 @@
-package net.trentv.minecraft.darkness.proxy;
+package net.trentv.minecraft.darkness.client;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
@@ -11,10 +11,10 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.ClientTickEvent;
 import net.trentv.minecraft.darkness.AdvancedDarkness;
+import net.trentv.minecraft.darkness.common.CommonProxy;
 
-public class ProxyClient extends ProxyCommon
+public class ClientProxy extends CommonProxy
 {
-
 	@Override
 	public void registerRenderers()
 	{
@@ -25,7 +25,7 @@ public class ProxyClient extends ProxyCommon
 	public void registerEvents()
 	{
 		super.registerEvents();
-		MinecraftForge.EVENT_BUS.register(new ProxyClient());
+		MinecraftForge.EVENT_BUS.register(new ClientProxy());
 	}
 
 	@SubscribeEvent
@@ -55,7 +55,6 @@ public class ProxyClient extends ProxyCommon
 			}
 			lightMod = count;
 		}
-
 		if (true | AdvancedDarkness.config.autoSetLightLevel)
 		{
 			float lightLevel = AdvancedDarkness.config.lightLevel;
