@@ -11,6 +11,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.ClientTickEvent;
 import net.trentv.minecraft.darkness.AdvancedDarkness;
+import net.trentv.minecraft.darkness.AdvancedDarknessConfiguration.ModConfig;
 import net.trentv.minecraft.darkness.common.CommonProxy;
 
 public class ClientProxy extends CommonProxy
@@ -31,11 +32,24 @@ public class ClientProxy extends CommonProxy
 	@SubscribeEvent
 	public void onClientTick(ClientTickEvent event)
 	{
-		int lightMod = 0;
-		int lightRadius = 10;
+		ModConfig config = AdvancedDarkness.config;
 		EntityPlayer player = Minecraft.getMinecraft().player;
-		if (player != null)
+		if (player == null)
+			return;
+		int dimension = player.dimension;
+
+		boolean isDark = false;
+
+		if (config.dimensionsBlacklist.contains(dimension) || !config.autoSetLightLevel)
 		{
+			resetGammaSetting();
+			return;
+		}
+
+		if (config.dimensionsWhitelist.contains(dimension) || config.isDarkByDefault)
+		{
+			int lightMod = 0;
+			int lightRadius = 10;
 			World world = player.world;
 			BlockPos pos = new BlockPos(player.posX, player.posY, player.posZ);
 			int count = 0;
@@ -54,18 +68,30 @@ public class ClientProxy extends CommonProxy
 				}
 			}
 			lightMod = count;
-		}
-		if (AdvancedDarkness.config.autoSetLightLevel)
-		{
-			float lightLevel = AdvancedDarkness.config.lightLevel;
-			float maxLightLevel = AdvancedDarkness.config.maxLightLevel;
-			lightLevel += 0.1 * lightMod;
-			if (lightLevel > maxLightLevel)
+			if (config.autoSetLightLevel)
 			{
-				lightLevel = maxLightLevel;
+				float lightLevel = config.lightLevel;
+				float maxLightLevel = config.maxLightLevel;
+				lightLevel += 0.1 * lightMod;
+				if (lightLevel > maxLightLevel)
+				{
+					lightLevel = maxLightLevel;
+				}
+				Minecraft.getMinecraft().gameSettings.gammaSetting = lightLevel;
 			}
-			Minecraft.getMinecraft().gameSettings.gammaSetting = lightLevel;
 		}
+		else
+		{
+			resetGammaSetting();
+		}
+
 	}
 
+	private void resetGammaSetting()
+	{
+		if (Minecraft.getMinecraft().gameSettings.gammaSetting < 0)
+		{
+			Minecraft.getMinecraft().gameSettings.gammaSetting = 0.5f;
+		}
+	}
 }

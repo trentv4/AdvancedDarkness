@@ -44,10 +44,16 @@ public class AdvancedDarknessConfiguration implements IModGuiFactory
 
 	public static class ModConfig extends Configuration
 	{
-		public static final String CATEGORY = "advanced_darkness";
+		public static final String CAT_DARKNESS = "core";
+		public static final String CAT_DIMENSIONS = "dimensions";
+
 		public float lightLevel;
 		public boolean autoSetLightLevel;
 		public float maxLightLevel;
+
+		public ArrayList<Integer> dimensionsWhitelist;
+		public ArrayList<Integer> dimensionsBlacklist;
+		public boolean isDarkByDefault;
 
 		public ModConfig()
 		{
@@ -58,9 +64,25 @@ public class AdvancedDarknessConfiguration implements IModGuiFactory
 
 		public void update()
 		{
-			lightLevel = getFloat("lightLevel", CATEGORY, -0.7f, -2500f, 2500f, "Mandated gamma level. This value cannot be changed after game launch.");
-			autoSetLightLevel = getBoolean("autoSetlightLevel", CATEGORY, true, "Sets if the gamma is automatically set to lightLevel and cannot be changed.");
-			maxLightLevel = getFloat("maxLightLevel", CATEGORY, 0.0f, -2500f, 2500f, "Maximum gamma level you can boost to using gamma adjuster blocks.");
+			lightLevel = getFloat("lightLevel", CAT_DARKNESS, -0.7f, -2500f, 2500f, "Mandated gamma level.");
+			autoSetLightLevel = getBoolean("autoSetlightLevel", CAT_DARKNESS, true, "Sets if the gamma is automatically set to lightLevel and cannot be changed.");
+			maxLightLevel = getFloat("maxLightLevel", CAT_DARKNESS, 0.0f, -2500f, 2500f, "Maximum gamma level you can boost to using gamma adjuster blocks.");
+
+			isDarkByDefault = getBoolean("isDarkByDefault", CAT_DIMENSIONS, true, "Is every dimension dark by default");
+			String[] tempWhitelist = getStringList("darknessWhitelist", CAT_DIMENSIONS, new String[] {}, "What dimensions have darkness force applied");
+			dimensionsWhitelist = new ArrayList<Integer>();
+			for (String s : tempWhitelist)
+			{
+				dimensionsWhitelist.add(Integer.parseInt(s));
+			}
+
+			String[] tempBlacklist = getStringList("dimensionsBlacklist", CAT_DIMENSIONS, new String[] {}, "What dimensions have darkness force never applied");
+			dimensionsBlacklist = new ArrayList<Integer>();
+			for (String s : tempBlacklist)
+			{
+				dimensionsBlacklist.add(Integer.parseInt(s));
+			}
+
 			save();
 		}
 	}
@@ -83,7 +105,9 @@ public class AdvancedDarknessConfiguration implements IModGuiFactory
 			Configuration config = AdvancedDarkness.config;
 			if (config != null)
 			{
-				ConfigCategory categoryClient = config.getCategory(ModConfig.CATEGORY);
+				ConfigCategory categoryClient = config.getCategory(ModConfig.CAT_DARKNESS);
+				configElements.addAll(new ConfigElement(categoryClient).getChildElements());
+				categoryClient = config.getCategory(ModConfig.CAT_DIMENSIONS);
 				configElements.addAll(new ConfigElement(categoryClient).getChildElements());
 			}
 			return configElements;
