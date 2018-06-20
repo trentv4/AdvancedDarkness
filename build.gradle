@@ -15,7 +15,7 @@ apply plugin: 'net.minecraftforge.gradle.forge'
 
 group = "net.trentv.minecraft.darkness"
 version = "1.12-" + getVersion()
-archivesBaseName = "advanced-darkness"
+archivesBaseName = "advanced_darkness"
 
 minecraft {
     version = "1.12.2-14.23.3.2673"
@@ -41,7 +41,6 @@ processResources {
 String getVersion() {
 	String major = "0";
 	String revision = "0";
-	String patch = "0";
 	String prefix = "public static final String VERSION = \"";
 	File file = file("src/main/java/net/trentv/minecraft/darkness/AdvancedDarkness.java")
 	file.eachLine { String s ->
@@ -52,8 +51,7 @@ String getVersion() {
 
 			major = pts[0];
 			revision = pts[1];
-			patch = pts[2];
 		}
 	}
-	return "$major.$revision.$patch";
+	return "$major.$revision";
 }
