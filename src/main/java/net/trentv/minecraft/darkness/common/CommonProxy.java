@@ -22,23 +22,23 @@ public class CommonProxy
 
 	public void registerEvents()
 	{
-		MinecraftForge.EVENT_BUS.register(CommonProxy.class);
+		MinecraftForge.EVENT_BUS.register(new CommonProxy());
 	}
 
 	@SubscribeEvent
-	public static void onBlockRegister(RegistryEvent.Register<Block> event)
+	public void onBlockRegister(RegistryEvent.Register<Block> event)
 	{
 		event.getRegistry().register(AdvancedDarkness.BLOCK_LANTERN);
 	}
 
 	@SubscribeEvent
-	public static void onItemRegister(RegistryEvent.Register<Item> event)
+	public void onItemRegister(RegistryEvent.Register<Item> event)
 	{
 		event.getRegistry().register(AdvancedDarkness.ITEMBLOCK_LANTERN);
 	}
 
 	@SubscribeEvent
-	public static void onConfigChange(ConfigChangedEvent.OnConfigChangedEvent e)
+	public void onConfigChange(ConfigChangedEvent.OnConfigChangedEvent e)
 	{
 		if (e.getModID().equals(AdvancedDarkness.MODID))
 		{
