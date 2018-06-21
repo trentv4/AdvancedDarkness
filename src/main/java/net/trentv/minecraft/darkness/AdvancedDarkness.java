@@ -28,7 +28,7 @@ public class AdvancedDarkness
 	public static final BlockLantern BLOCK_LANTERN = (BlockLantern) new BlockLantern(Material.GLASS).setCreativeTab(CreativeTabs.DECORATIONS).setUnlocalizedName("lantern").setRegistryName(MODID, "lantern");
 	public static final ItemBlock ITEMBLOCK_LANTERN = (ItemBlock) new ItemBlock(BLOCK_LANTERN).setRegistryName(BLOCK_LANTERN.getRegistryName());
 
-	public static final DamageSource DAMAGE_DARKNESS = new DamageSourceDarkness("darkness");
+	public static final DamageSource DAMAGE_DARKNESS = new DamageSource("darkness").setDamageBypassesArmor();
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)
@@ -36,14 +36,5 @@ public class AdvancedDarkness
 		config = new ModConfig();
 		proxy.registerRenderers();
 		proxy.registerEvents();
-	}
-
-	private static class DamageSourceDarkness extends DamageSource
-	{
-		public DamageSourceDarkness(String damageType)
-		{
-			super(damageType);
-			this.setDamageBypassesArmor();
-		}
 	}
 }
