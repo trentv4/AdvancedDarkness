@@ -2,13 +2,13 @@ package net.trentv.minecraft.darkness.common;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.WorldTickEvent;
-import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.trentv.minecraft.darkness.AdvancedDarkness;
 import net.trentv.minecraft.darkness.AdvancedDarknessConfiguration.ModConfig;
 
@@ -29,7 +29,12 @@ public class CommonProxy
 	public static void onBlockRegister(RegistryEvent.Register<Block> event)
 	{
 		event.getRegistry().register(AdvancedDarkness.BLOCK_LANTERN);
-		ForgeRegistries.ITEMS.register(AdvancedDarkness.ITEMBLOCK_LANTERN);
+	}
+
+	@SubscribeEvent
+	public static void onItemRegister(RegistryEvent.Register<Item> event)
+	{
+		event.getRegistry().register(AdvancedDarkness.ITEMBLOCK_LANTERN);
 	}
 
 	@SubscribeEvent
