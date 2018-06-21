@@ -59,14 +59,19 @@ public class CommonProxy
 
 		if (p.world.isRemote || !config.isDarknessDamaging)
 			return;
+		if (config.dimensionsBlacklist.contains(p.dimension) || !config.autoSetLightLevel)
+			return;
 
-		if (p.world.getLight(p.getPosition(), false) <= 5)
+		if (config.dimensionsWhitelist.contains(p.dimension) || config.isDarkByDefault)
 		{
-			if (tickCount == 0)
+			if (p.world.getLight(p.getPosition(), false) <= 5)
 			{
-				p.setEntityInvulnerable(false);
-				p.hurtResistantTime = 0;
-				p.attackEntityFrom(AdvancedDarkness.DAMAGE_DARKNESS, config.darknessDamage);
+				if (tickCount == 0)
+				{
+					p.setEntityInvulnerable(false);
+					p.hurtResistantTime = 0;
+					p.attackEntityFrom(AdvancedDarkness.DAMAGE_DARKNESS, config.darknessDamage);
+				}
 			}
 		}
 	}
