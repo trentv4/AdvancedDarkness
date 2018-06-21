@@ -14,7 +14,7 @@ buildscript {
 apply plugin: 'net.minecraftforge.gradle.forge'
 
 group = "net.trentv.minecraft.darkness"
-version = "1.12-" + getVersion()
+version = "1.12.2-" + getVersion()
 archivesBaseName = "advanced_darkness"
 
 minecraft {
