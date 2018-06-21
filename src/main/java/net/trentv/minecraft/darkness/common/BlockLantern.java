@@ -43,11 +43,7 @@ public class BlockLantern extends Block
 	@Override
 	public IBlockState getStateFromMeta(int meta)
 	{
-		if (meta == 0)
-		{
-			return getDefaultState().withProperty(IS_ON_CEILING, true);
-		}
-		return getDefaultState().withProperty(IS_ON_CEILING, false);
+		return getDefaultState().withProperty(IS_ON_CEILING, meta == 0);
 	}
 
 	@Override
