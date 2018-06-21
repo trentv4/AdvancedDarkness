@@ -46,6 +46,7 @@ public class AdvancedDarknessConfiguration implements IModGuiFactory
 	{
 		public static final String CAT_DARKNESS = "core";
 		public static final String CAT_DIMENSIONS = "dimensions";
+		public static final String CAT_DAMAGE = "damage";
 
 		public float lightLevel;
 		public boolean autoSetLightLevel;
@@ -54,6 +55,10 @@ public class AdvancedDarknessConfiguration implements IModGuiFactory
 		public ArrayList<Integer> dimensionsWhitelist;
 		public ArrayList<Integer> dimensionsBlacklist;
 		public boolean isDarkByDefault;
+
+		public boolean isDarknessDamaging;
+		public float darknessDamage;
+		public int darknessDamageDelay;
 
 		public ModConfig()
 		{
@@ -83,6 +88,10 @@ public class AdvancedDarknessConfiguration implements IModGuiFactory
 				dimensionsBlacklist.add(Integer.parseInt(s));
 			}
 
+			isDarknessDamaging = getBoolean("isDarknessDamaging", CAT_DAMAGE, false, "Does darkness damage the player");
+			darknessDamage = getFloat("darknessDamage", CAT_DAMAGE, 4f, 0f, Float.MAX_VALUE, "Damage per tick in hearts.");
+			darknessDamageDelay = getInt("darknessDamageDelay", CAT_DAMAGE, 40, 0, Integer.MAX_VALUE, "Time between damage ticks in game ticks");
+
 			save();
 		}
 	}
@@ -108,6 +117,8 @@ public class AdvancedDarknessConfiguration implements IModGuiFactory
 				ConfigCategory categoryClient = config.getCategory(ModConfig.CAT_DARKNESS);
 				configElements.addAll(new ConfigElement(categoryClient).getChildElements());
 				categoryClient = config.getCategory(ModConfig.CAT_DIMENSIONS);
+				configElements.addAll(new ConfigElement(categoryClient).getChildElements());
+				categoryClient = config.getCategory(ModConfig.CAT_DAMAGE);
 				configElements.addAll(new ConfigElement(categoryClient).getChildElements());
 			}
 			return configElements;

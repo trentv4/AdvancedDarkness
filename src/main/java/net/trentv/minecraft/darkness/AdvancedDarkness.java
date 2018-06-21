@@ -3,6 +3,7 @@ package net.trentv.minecraft.darkness;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.util.DamageSource;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.SidedProxy;
@@ -27,11 +28,22 @@ public class AdvancedDarkness
 	public static final BlockLantern BLOCK_LANTERN = (BlockLantern) new BlockLantern(Material.GLASS).setCreativeTab(CreativeTabs.DECORATIONS).setUnlocalizedName("lantern").setRegistryName(MODID, "lantern");
 	public static final ItemBlock ITEMBLOCK_LANTERN = (ItemBlock) new ItemBlock(BLOCK_LANTERN).setRegistryName(BLOCK_LANTERN.getRegistryName());
 
+	public static final DamageSource DAMAGE_DARKNESS = new DamageSourceDarkness("darkness");
+
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)
 	{
 		config = new ModConfig();
 		proxy.registerRenderers();
 		proxy.registerEvents();
+	}
+
+	private static class DamageSourceDarkness extends DamageSource
+	{
+		public DamageSourceDarkness(String damageType)
+		{
+			super(damageType);
+			this.setDamageBypassesArmor();
+		}
 	}
 }
