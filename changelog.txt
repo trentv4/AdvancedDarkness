@@ -1,10 +1,14 @@
-Advanced Darkness 1.3 for Minecraft 1.12.2
+Advanced Darkness 1.4 for Minecraft 1.12.2
 ----------
-
-Changes:
-
-* Update to 1.12.2
 
 Additions:
 
-* Add ingame configuration menu using Forge mod options
+* Add configuration for causing harm in total darkness
+    * Add boolean for causing damage in darkness
+    * Add float for how much damage in hearts is caused
+    * Add int for game ticks between damage ticks
+
+* Add configuration for specifying darkness on a per-dimension basis
+    * Add whitelist for dimensions which are always dark
+    * Add blacklist for dimensions which are never darkness
+    * Add boolean for applying darkness by default
