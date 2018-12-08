@@ -18,8 +18,8 @@ version = "1.12.2-" + getVersion()
 archivesBaseName = "advanced_darkness"
 
 minecraft {
-    version = "1.12.2-14.23.3.2673"
-	mappings = "snapshot_20171003"
+    version = "1.12.2-14.23.5.2772"
+	mappings = "stable_39"
 	runDir = "run"
 	useDepAts = true
 }

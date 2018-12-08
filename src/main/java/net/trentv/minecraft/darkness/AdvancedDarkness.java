@@ -17,7 +17,7 @@ public class AdvancedDarkness
 {
 	public static final String NAME = "Advanced Darkness";
 	public static final String MODID = "advanced_darkness";
-	public static final String VERSION = "1.4";
+	public static final String VERSION = "1.5";
 	public static final String GUI_FACTORY = "net.trentv.minecraft.darkness.AdvancedDarknessConfiguration";
 
 	public static ModConfig config;
@@ -25,7 +25,7 @@ public class AdvancedDarkness
 	@SidedProxy(clientSide = "net.trentv.minecraft.darkness.client.ClientProxy", serverSide = "net.trentv.minecraft.darkness.common.CommonProxy", modId = AdvancedDarkness.MODID)
 	public static CommonProxy proxy;
 
-	public static final BlockLantern BLOCK_LANTERN = (BlockLantern) new BlockLantern(Material.GLASS).setCreativeTab(CreativeTabs.DECORATIONS).setUnlocalizedName(MODID + ".lantern").setRegistryName(MODID, "lantern");
+	public static final BlockLantern BLOCK_LANTERN = (BlockLantern) new BlockLantern(Material.GLASS).setCreativeTab(CreativeTabs.DECORATIONS).setTranslationKey(MODID + ".lantern").setRegistryName(MODID, "lantern");
 	public static final ItemBlock ITEMBLOCK_LANTERN = (ItemBlock) new ItemBlock(BLOCK_LANTERN).setRegistryName(BLOCK_LANTERN.getRegistryName());
 
 	public static final DamageSource DAMAGE_DARKNESS = new DamageSource("darkness").setDamageBypassesArmor();
