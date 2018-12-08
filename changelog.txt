@@ -1,14 +1,10 @@
-Advanced Darkness 1.4 for Minecraft 1.12.2
+Advanced Darkness 1.5 for Minecraft 1.12.2
 ----------
 
 Additions:
 
-* Add configuration for causing harm in total darkness
-    * Add boolean for causing damage in darkness
-    * Add float for how much damage in hearts is caused
-    * Add int for game ticks between damage ticks
+* Add configuration for specifying light-increasing blocks (i.e. comforting lantern)
 
-* Add configuration for specifying darkness on a per-dimension basis
-    * Add whitelist for dimensions which are always dark
-    * Add blacklist for dimensions which are never darkness
-    * Add boolean for applying darkness by default
+* Add configuration for specifying darkness based on lunar phase
+    * Add float for darkness change on a new moon
+    * Add float for darkness change on a full moon
