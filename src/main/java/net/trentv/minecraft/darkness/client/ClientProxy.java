@@ -72,6 +72,10 @@ public class ClientProxy extends CommonProxy
 				float lightLevel = config.lightLevel;
 				float maxLightLevel = config.maxLightLevel;
 				lightLevel += 0.1 * lightMod;
+				if (world.getMoonPhase() == 0)
+					lightLevel += AdvancedDarkness.config.lightChangeFullMoon;
+				if (world.getMoonPhase() == 4)
+					lightLevel += AdvancedDarkness.config.lightChangeNewMoon;
 				if (lightLevel > maxLightLevel)
 				{
 					lightLevel = maxLightLevel;

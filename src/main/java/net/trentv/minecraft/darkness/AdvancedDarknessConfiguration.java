@@ -53,6 +53,8 @@ public class AdvancedDarknessConfiguration implements IModGuiFactory
 		public boolean autoSetLightLevel;
 		public float maxLightLevel;
 		public ArrayList<ResourceLocation> lightIncreasingBlocks;
+		public float lightChangeFullMoon;
+		public float lightChangeNewMoon;
 
 		public ArrayList<Integer> dimensionsWhitelist;
 		public ArrayList<Integer> dimensionsBlacklist;
@@ -80,6 +82,8 @@ public class AdvancedDarknessConfiguration implements IModGuiFactory
 			{
 				lightIncreasingBlocks.add(new ResourceLocation(s));
 			}
+			lightChangeFullMoon = getFloat("lightChangeFullMoon", CAT_DARKNESS, 0, -2500f, 2500f, "Light level change when it is a full moon. Set to 0 for no change.");
+			lightChangeNewMoon = getFloat("lightChangeNewMoon", CAT_DARKNESS, 0, -2500f, 2500f, "Light level change when it is a new moon. Set to 0 for no change.");
 
 			isDarkByDefault = getBoolean("isDarkByDefault", CAT_DIMENSIONS, true, "Is every dimension dark by default");
 			String[] tempWhitelist = getStringList("darknessWhitelist", CAT_DIMENSIONS, new String[] {}, "What dimensions have darkness force applied");
