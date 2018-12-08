@@ -9,6 +9,7 @@ import javax.annotation.Nullable;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.config.ConfigCategory;
 import net.minecraftforge.common.config.ConfigElement;
 import net.minecraftforge.common.config.Configuration;
@@ -51,6 +52,7 @@ public class AdvancedDarknessConfiguration implements IModGuiFactory
 		public float lightLevel;
 		public boolean autoSetLightLevel;
 		public float maxLightLevel;
+		public ArrayList<ResourceLocation> lightIncreasingBlocks;
 
 		public ArrayList<Integer> dimensionsWhitelist;
 		public ArrayList<Integer> dimensionsBlacklist;
@@ -72,6 +74,12 @@ public class AdvancedDarknessConfiguration implements IModGuiFactory
 			lightLevel = getFloat("lightLevel", CAT_DARKNESS, -0.7f, -2500f, 2500f, "Mandated gamma level.");
 			autoSetLightLevel = getBoolean("autoSetlightLevel", CAT_DARKNESS, true, "Sets if the gamma is automatically set to lightLevel and cannot be changed.");
 			maxLightLevel = getFloat("maxLightLevel", CAT_DARKNESS, 0.0f, -2500f, 2500f, "Maximum gamma level you can boost to using gamma adjuster blocks.");
+			String[] tempLightIncreasingBlocks = getStringList("lightIncreasingBlocks", CAT_DARKNESS, new String[] { "advanced_darkness:lantern" }, "List of blocks that increase the light level");
+			lightIncreasingBlocks = new ArrayList<ResourceLocation>();
+			for (String s : tempLightIncreasingBlocks)
+			{
+				lightIncreasingBlocks.add(new ResourceLocation(s));
+			}
 
 			isDarkByDefault = getBoolean("isDarkByDefault", CAT_DIMENSIONS, true, "Is every dimension dark by default");
 			String[] tempWhitelist = getStringList("darknessWhitelist", CAT_DIMENSIONS, new String[] {}, "What dimensions have darkness force applied");

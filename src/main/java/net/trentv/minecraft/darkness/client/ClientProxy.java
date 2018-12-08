@@ -59,7 +59,7 @@ public class ClientProxy extends CommonProxy
 					for (int k = -lightRadius; k < lightRadius; k++)
 					{
 						Block block = world.getBlockState(pos.add(i, j, k)).getBlock();
-						if (block == AdvancedDarkness.BLOCK_LANTERN)
+						if (AdvancedDarkness.config.lightIncreasingBlocks.contains(block.getRegistryName()))
 						{
 							count++;
 						}
